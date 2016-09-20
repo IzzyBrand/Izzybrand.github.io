@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0032)http://nickm.com/poems/lede.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+/* <![CDATA[ */
+body {
+ background: #fff;
+ color: #000;
+ margin: 0 0 0 24pt;
+ font-family: Optima, sans-serif;
+ font-size: 13pt;
+}
+a {
+ color: #117;
+ text-decoration: none;
+}
+/* ]]> */
+</style>
+<script type="text/javascript">
+var t = 0;
+var absurd_situation = ["BREAKING", "ALERT", "CODE RED", "WARNING", "THIS JUST IN"];
+var sad_descriptor = ["man", "octopus", "mob", "mother", "dog", "karate class", "rogue tiger", "oak tree"];
+var nationality = ["robs", "steals", "tickles", "betrays", "punches", "scares", "absconds with", "marries"];
+var man_or_woman = ["small child", "waitress", "cat", "phone booth", "the pope", "my left arm", "that creepy old dude in the corner"];
+var silly_character = ["Medics", "Doctors", "Police", "The marines", "Fire Fighters", "The local militia", "Our readers"];
+var interact_with = ["getting donuts", "watching Archer", "trying to catch falling leaves", "fast asleep in a cuddle puddle", "lost in thought", "confused"];
+function rand_range(max) {
+    "use strict";
+    return Math.floor(Math.random() * (max + 1));
+}
+function fresh(array) {
+    "use strict";
+    var index = rand_range(array.length - 2) + 1, selection = array[index];
+    array[index] = array[0];
+    array[0] = selection;
+    return selection;
+}
+function story() {
+    "use strict";
+    var last, lede, main = document.getElementById('main');
+    if (t <= 12) {
+        t += 1;
+    } else {
+        main.removeChild(document.getElementById('main').firstChild);
+    }
+    last = document.createElement('div');
+    last.appendChild(document.createElement('br'));
+    lede = fresh(absurd_situation) + ": Area " + fresh(sad_descriptor) + " " + fresh(nationality) + " " + fresh(man_or_woman) + "! " + fresh(silly_character) + " are " + fresh(interact_with) + ".";
+    last.appendChild(document.createTextNode(lede));
+    main.appendChild(last);
+}
+function produce_stories() {
+    "use strict";
+    story();
+    setInterval(story, 3500);
+}</script>
+  <title>Lede</title>
+</head>
+<body onload="produce_stories();">
+<div style="float:right; background:#999; margin-left:6px; border-left:thin #000 solid; border-bottom:thin #000 solid; padding:6px">
+<div><br>NY TIMES<br>From our correspondant, <a href="https://media.giphy.com/media/UHKL9BtyM4WrK/giphy.gif">Dat Boi.</a><br></div>
+</div>
+<div id="main"></div>
+</body></html>
