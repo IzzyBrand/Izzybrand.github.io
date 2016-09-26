@@ -1,0 +1,23 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1>Text will go here</h1>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+	"sentence" : ["If I had a bowl of #candy# and I told you #quantity# would #verbPhrase#, would you #eatVerb# them?"],
+	"candy" : ["three musketeers", "milk duds", "reeses cups", "m\&ms", "sour patch kids", "double stuff oreos", "gobstoppers"],
+	"quantity" : ["#modifier# #amount#", "#amount#"],
+	"modifier" : ["approximately", "just", "exactly", "almost", "no more than", "an amount no less than"],
+	"amount" : ["one", "shfifty-five", "tree fiddy", "eleventy-two", "seven", "half", "none", "100%", "2"],
+	"verbPhrase" : ["#verb# you", "#phrase#"],
+	"phrase" : ["decalcify your pineal gland", "open your third eye", "challenge you to a DDR battle", "file your state and federal taxes", "beat you at Smash", "become your best friend"],
+	"verb" : ["enlighten", "satiate", "make love to", "have no effect on", "vote for"],
+	"eatVerb" : ["eat", "eat", "eat", "#verb#", "#verb#", "#verb#", "savor", "consume", "devour"]
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#sentence#");
+	$('h1').text(t);
+}
+</script>

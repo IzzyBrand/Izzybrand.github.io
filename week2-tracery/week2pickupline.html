@@ -1,0 +1,19 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1>Text will go here</h1>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+	"line" : ["Are you #thing#? Because #frequency# I #verb# you, #happening#."],
+	"thing" : ["a magician", "religious", "superstitious", "scared of textbooks", "a fan of baseball", "over 400 pounds", "my right hand"],
+	"frequency" : ["every time", "whenever", "once in a while when", "those times when", "on the rare occaision that", "every morning when"],
+	"verb" : ["see", "smell", "detect", "rediscover", "encounter", "get scared of"],
+	"happening" : ["Bernie drops a fire mixtape", "there's a solar eclipse", "I fall asleep on the spot", "I swipe right", "the birds sing their happiness","I get an angry text from your grandmother", "somewhere a kitten eats a butterfly", "it straight up starts raining gum wrappers"]
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#line#");
+	$('h1').text(t);
+}
+</script>

@@ -1,0 +1,23 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1>Text will go here</h1>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+	"line" : ["So why do you want to #verb# for #company#?\n#pause# because I #action#."],
+	"verb" : ["work", "swab the deck", "teach man-children elementary arithemtic", "collect coupons", "install bristles in toothbrushes", "play Kerbal Space Program"],
+	"company" : ["#name# #type#", "#name#", "the #name# company"],
+	"name" : ["KnifeSpoonFork", "SPEND", "Mediocre Daycare", "SprayPal", "Gaggle", "ComCorStries", "NASA", "Limeade Stand"],
+	"type" : ["industries", "LLC", "inc.", "incorporated"],
+	"pause" : ["Well", "Hmmm", "Uhhhh", "Good question. #pause#", "Errrrr", "Perhaps", "I guess it must be", "The only logical explanation is"],
+	"action" : ["love #thing#", "like #thing#", "get a lot of satisfaction from #thing#", "am a #local# expert on #thing#"],
+	"local" : ["national", "regional", "galactic", "proffesional", "local"],
+	"thing" : ["aligator containment", "screwing things together", "erasing whiteboards", "chocolate", "spinning counterclockwise a few times once in a while", "trying to send messages to the Death Star", "memorizing every line of Shrek"]
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#line#");
+	$('h1').text(t);
+}
+</script>
