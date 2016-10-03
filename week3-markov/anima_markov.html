@@ -1,0 +1,27 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var text;
+var markov = new MarkovGeneratorWord(2,50)
+$.get("anima_breathe.txt", function(text) {
+     markov.feed(text);
+});
+$.get("anima_optimism.txt", function(text) {
+     markov.feed(text);
+});
+$.get("anima_self.txt", function(text) {
+     markov.feed(text);
+});
+$.get("anima_silverscreen.txt", function(text) {
+     markov.feed(text);
+});
+$.get("anima_yourealive.txt", function(text) {
+     markov.feed(text);
+});
+function generate(){
+	var t = markov.generate().toLowerCase()
+	$('h1').text(t);
+}
+</script>
+<h1>Breathe out. Breathe in.</h1>
+<button onclick="generate()">Generate</button>

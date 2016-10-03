@@ -1,0 +1,38 @@
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/markov.js"></script>
+<script>
+var txt;
+var trumpGen = new MarkovGeneratorWord(2,50)
+var clintonGen = new MarkovGeneratorWord(2,50)
+var holtGen = new MarkovGeneratorWord(2,30)
+$.get("trump.txt", function(text) {
+     trumpGen.feed(text);
+});
+$.get("clinton.txt", function(text) {
+     clintonGen.feed(text);
+});
+$.get("holt.txt", function(text) {
+     holtGen.feed(text);
+});
+
+function rand_range(min,max) {
+    "use strict";
+    return Math.floor(Math.random() * (max+1-min)) + min;
+}
+
+function generate(){
+	var holtSays = holtGen.generate()
+	var trumpSays = trumpGen.generate()
+	var clintonSays = clintonGen.generate()
+	var cutOff = rand_range(0, 10)
+	if (cutOff > 7) {
+		clintonSays = clintonSays.slice(0, rand_range(0, clintonSays.length)) + "—"
+	}
+	$('body').append("<p><b>Holt: </b>"+holtSays+"</p>")
+	$('body').append("<p><b>Clinton: </b>"+clintonSays+"</p>")
+	$('body').append("<p><b>Trump: </b>"+trumpSays+"</p>")
+}
+
+
+</script>
+<button onclick="generate()">Generate</button>
