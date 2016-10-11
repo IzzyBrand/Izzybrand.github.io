@@ -1,0 +1,29 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<h1>Text will go here</h1>
+<button onclick="generate()">Generate</button>
+<script>
+var grammarObj = {
+	"tweet" : 	["#question#?", "#question#?", "#statement#."],
+	"question" : ["#theyQ", "#youQ"],
+	"youQ" : ["Do you #youSense#", "Do you #youSense# #knowledge#", "Do you #youSense# #youThing#"],
+	"youSense" : ["hear", "guess", "know", "understand"],
+	"youThing" : ["that", "them", "those things"],
+	"theyQ" : ["#theyQStart# they #theyVerb# #usme#", "#theyQStart# they ever #theyVerb# #usme#", "#theyQStart# they #theyTeachVerb# #usme# #knowledge#", "#theyQStart# they ever #theyTeachVerb# #usme# #knowledge#"],
+	"usme" : ["us", "us", "us", "us", "me"],
+	"theyQStart" : ["Would", "Will", "Can", "When will", "Why would", "How can", "How would", "How will"],
+	"theyVerb" : ["know", "reach", "talk to", "find", "take", "speak to", "touch", "show themselves to", "understand"],
+	"theyTeachVerb" : ["show", "teach", "explain to", "tell"],
+	"knowledge" : ["how", "why", "when"],
+
+
+	"statement" : ["#statementStart# I knew #knowledge#", "#statementStart# I knew"],
+	"statementStart" : ["If only", "I wish"]
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#tweet#");
+	$('h1').text(t);
+}
+</script>
