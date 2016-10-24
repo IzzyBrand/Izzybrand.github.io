@@ -1,0 +1,89 @@
+<script src="../lib/p5.min.js"></script>
+<script src="../lib/p5.sound.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script>
+var sound, amplitude;
+var isNotLoud = 0;
+//var txt = "Do not go gentle into that good night Old age should burn and rave at close of day Rage rage against the dying of the light Though wise men at their end know dark is right Because their words had forked no lightning they Do not go gentle into that good night Good men the last wave by crying how bright Their frail deeds might have danced in a green bay Rage rage against the dying of the light Wild men who caught and sang the sun in flight And learn too late they grieved it on its way Do not go gentle into that good night Grave men near death who see with blinding sight Blind eyes could blaze like meteors and be gay Rage rage against the dying of the light And you my father there on the sad height Curse bless me now with your fierce tears I pray Do not go gentle into that good night Rage rage against the dying of the light"
+// var txt = "Hold fast to dreams 
+// For if dreams die
+// Life is a broken-winged bird
+// That cannot fly.
+
+// Hold fast to dreams
+// For when dreams go
+// Life is a barren field
+// Frozen with snow.
+
+// Scale back your long hopes
+
+// to a short period. While we
+// speak, time is envious and
+
+// is running away from us.
+// Seize the day, trusting
+// little in the future."
+var txt = "you are the ring around Saturn spinning words as particles of ice and dust with the power to transcend you are the original chosen to be right here right now transmitting verbal frequencies through speaking my thoughts into existence you are the heir of omnipotence born with a direct connection to profound abundance The one whose words will age yet still have substance since there are no boundaries attached to my pen you are constant energy Translating personal experience into imagery Vulnerable to tyranny yet you continue attempting to share some truth through this abstract language of poetry you are the core you are that you are more you are the Divine Presence that is the Source of my rewards you are the green you get when you mix too much yellow with the blue That shade of gold you get when the sun resides into darkness and when it ascends in the dawn burning dew you are the transition between the third and fourth dimension of time the love you feel when you realize how it feels you are the poem that is abstractly direct because you write beyond limits absorbing frequencies from 3 to 8 hertz through meditation for several minutes you are the one bridging the gap between the analog ascension and the direct connection to spirit The one who is love because you are a descendent of it you are the rhythm that the wind blows you are the beginning and the ending of stories told about the universe and how miracles unfold you hold the power to accept judgement from those who will do just that Not knowing that you are them in the absolute reality of me Judge that you are knowledge beyond measure because that is my right So you continue meeting the different parts of me when you meditate and write Who are you you are THAT you are"
+var counter = 0;
+var previous_vol = 0;
+function preload(){
+  sound = loadSound('self.mp3');
+  txt = txt.split(" ")
+}
+function setup(){
+	amplitude = new p5.Amplitude();
+	// filter = new p5.BandPass();
+	// sound.connect(filter);
+	sound.play();
+	//sound.jump();
+	// fft = new p5.FFT();
+}
+function print_spaces(n) {
+	var ret = "";
+	for (var i = 0; i < n; i++) {
+		ret = ret + " ";
+	}
+	return ret;
+}
+
+function draw(){
+	// filter.freq(10000);
+	// filter.res(50);
+	var current_vol = amplitude.getLevel();
+	var t = (Math.round(sound.currentTime()*100)/100).toString()
+	//if(current_vol > .1 && isNotLoud){
+	if ((current_vol - previous_vol)/previous_vol > .25 && isNotLoud < 0) {
+		$('h1').text(txt[counter]);
+		$('h1').css("font-size", (previous_vol+current_vol)*350.0);
+		//$('h1').textsize(current_vol * 100.0)
+		isNotLoud = 15;
+		counter++;
+		if(counter > txt.length-1){counter=0}
+	}
+	//console.log((current_vol - previous_vol)/previous_vol);
+	previous_vol = previous_vol*0.49 + current_vol*0.5;
+	//if(current_vol <= .05){
+	if ((current_vol - previous_vol)/previous_vol < .12) {
+		isNotLoud--;
+	} 
+	console.log(print_spaces((current_vol - previous_vol)/previous_vol*100) + (current_vol - previous_vol)/previous_vol*100)
+}
+
+</script>
+<style>
+h1 {
+	text-align: center;
+	font-size: 10em;
+	font-family: Arial Black;
+	color: white;
+	margin-top: 10%;
+}
+html { 
+  background: url(stars.jpg) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+<h1></h1>
