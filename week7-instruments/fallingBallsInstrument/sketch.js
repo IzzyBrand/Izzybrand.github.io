@@ -17,12 +17,12 @@ function setup() {
   ballColor = color(255);
   balls = new Array();
   instruments = new Array();
-  instruments.push(new Instrument(color(150,41,246), loadSound("clips/boop.mp3")))
-  instruments.push(new Instrument(color(130, 210,43), loadSound("clips/bounce.mp3")))
+  instruments.push(new Instrument(color(150,41,246), loadSound("clips/tick.mp3")))
+  instruments.push(new Instrument(color(247, 212, 8), loadSound("clips/gah.mp3")))
+  instruments.push(new Instrument(color(130, 210,43), loadSound("clips/blue.mp3")))
   instruments.push(new Instrument(color(62, 215, 247), loadSound("clips/drop.mp3")))
-  instruments.push(new Instrument(color(247, 212, 8), loadSound("clips/metalClack.mp3")))
   instruments.push(new Instrument(color(236, 23, 149), loadSound("clips/pop.mp3")))
-  instruments.push(new Instrument(color(247, 151, 0), loadSound("clips/tick.mp3")))
+  instruments.push(new Instrument(color(247, 151, 0), loadSound("clips/string.mp3")))
 }
 
 
