@@ -1,9 +1,9 @@
 {
-  "name": "AIRHORN",
+  "name": "Post Truth",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Boilerplate extension for digital language arts II",
-  "homepage_url": "http://hotwriting.net",
+  "description": "'Excuse me, but actually...' the internet",
+  "homepage_url": "http://www.izzybrand.com",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

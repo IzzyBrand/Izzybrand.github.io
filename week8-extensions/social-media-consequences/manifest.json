@@ -1,8 +1,8 @@
 {
-  "name": "Social Media Consequences",
+  "name": "Post Truth",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Boilerplate extension for digital language arts II",
+  "description": "A chrome extension for the post-truth internet user",
   "homepage_url": "http://tiny.cc/dla2",
   "icons": {
     "16": "icons/icon16.png",

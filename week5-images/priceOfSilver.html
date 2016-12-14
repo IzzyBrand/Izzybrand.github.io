@@ -1,0 +1,36 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+ 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<style>
+/*this block of code makes an image take up the full background of a page*/
+html { 
+  background: url(rocketlaunch.png) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/*this block controls the styling of our text*/
+h1 {
+	text-align: center;
+	color: green;
+	font-family: Century Gothic;
+	font-size: 6em;
+	margin-top: 15%;
+}
+</style>
+<h1>Price of Silver</h1>
+<script type="text/javascript">
+function update() {
+	var price = $.ajax({
+					    url:'http://www.nytimes.com/',
+					        type:'GET',
+					        success: function(data){
+					           $('#content').html($(data).find('#firstHeading').html());
+					        }
+					});
+	console.log(price)
+	$('h1').text(price)
+}	
+setInterval(update, 1000);
+</script>
