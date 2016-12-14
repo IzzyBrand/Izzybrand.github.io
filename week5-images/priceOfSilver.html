@@ -24,10 +24,10 @@ h1 {
 <script type="text/javascript">
 function update() {
 	var price = $.ajax({
-					    url:'http://www.nytimes.com/',
+					    url:'https://www.kitco.com/charts/livesilver.html?sitetype=fullsite',
 					        type:'GET',
 					        success: function(data){
-					           $('#content').html($(data).find('#firstHeading').html());
+					           $('#content').html($(data).find('#sp-bid').html());
 					        }
 					});
 	console.log(price)
